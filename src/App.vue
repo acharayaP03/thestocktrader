@@ -11,6 +11,10 @@ export default {
   components: {
     appHeader: Header,
   },
+  created(){
+    console.log(this.$store.dispatch('setStocks'))
+    this.$store.dispatch('setStocks')
+  }
 };
 </script>
 <style>
