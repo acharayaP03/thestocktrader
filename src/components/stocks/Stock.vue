@@ -39,12 +39,13 @@ export default {
   methods: {
     buyStock() {
       const order = {
-        stockId: new Date().toISOString(),
+        stockId: this.stock.id,
         stockQuantity: this.quantity,
         stockPrice: this.stock.price,
       };
 
       console.log(order);
+      this.$store.dispatch('buyStocks', order)
       this.quantity = 0;
     },
   },

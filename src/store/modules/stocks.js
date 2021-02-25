@@ -14,8 +14,10 @@ const mutations = {
 }
 
 const actions ={
-  buyStocks: ({ commit }) =>{
-    commit();
+  buyStocks: ({ commit }, order) =>{
+    //BUY_STOCKS reffers to the global name space of portfolio.
+    //note: store is available across the applications and can be accessed from anywhere.
+    commit('BUY_STOCKS', order);
   },
   setStocks: ({ commit })=>{
     //stocks is the data that we are receiveing from data/stocks.js
