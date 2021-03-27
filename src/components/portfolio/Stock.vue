@@ -1,9 +1,10 @@
 <template>
   <div class="col-sm-6 col-md-4">
     <div class="mb-3 text-white card">
-      <div class="card-header bg-success">
+      <div class="card-header bg-info">
         <h5 class="card-title">
-          {{ stock.name }} <small>(Price: {{ stock.price }}) | Quantity: {{ stock.quantity }} </small>
+          {{ stock.name }}
+          <small>(Price: {{ stock.price }}) | Quantity: {{ stock.quantity }} </small>
         </h5>
       </div>
       <div class="card-body">
@@ -24,7 +25,7 @@
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 export default {
   props: {
     stock: {
@@ -38,15 +39,18 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['sellStocks']),
-    
+    ...mapActions({
+      sellingStock: "sellStock",
+    }),
+
     sellStock() {
       const order = {
         stockId: this.stock.id,
         stockQuantity: this.quantity,
         stockPrice: this.stock.price,
       };
-      this.$store.dispatch('sellStocks', order)
+      this.sellingStock(order);
+      this.quantity = 0;
     },
   },
 };
