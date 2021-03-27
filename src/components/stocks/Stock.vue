@@ -15,7 +15,11 @@
             placeholder="Quantity...."
             v-model="quantity"
           />
-          <button class="btn btn-success" @click="buyStock" :disabled="quantity <= 0">
+          <button
+            class="btn btn-success"
+            @click="buyStock"
+            :disabled="+quantity <= 0 || !Number.isInteger(+quantity)"
+          >
             Buy
           </button>
         </div>
@@ -25,12 +29,7 @@
 </template>
 <script>
 export default {
-  props: {
-    stock: {
-      type: Object,
-      required: true,
-    },
-  },
+  props: ["stock"],
   data() {
     return {
       quantity: 0,
@@ -40,12 +39,12 @@ export default {
     buyStock() {
       const order = {
         stockId: this.stock.id,
-        stockQuantity: this.quantity,
+        quantity: +this.quantity,
         stockPrice: this.stock.price,
       };
 
       console.log(order);
-      this.$store.dispatch('buyStocks', order)
+      this.$store.dispatch("buyStocks", order);
       this.quantity = 0;
     },
   },
