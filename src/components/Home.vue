@@ -5,7 +5,7 @@
       <p class="lead">
         You may Save or Load your data and click on 'End Day' to begin a New day.
       </p>
-      <p>Your Funds: {{ funds }}</p>
+      <p>Your Funds: {{ funds | currency }}</p>
     </div>
   </main>
 </template>

@@ -3,7 +3,7 @@
     <div class="mb-3 text-white card">
       <div class="card-header bg-success">
         <h5 class="card-title">
-          {{ stock.name }} <small>(Price: {{ stock.price }})</small>
+          {{ stock.name }} <small>(Price: {{ stock.price | currency }})</small>
         </h5>
       </div>
       <div class="card-body">
